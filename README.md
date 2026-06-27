@@ -142,14 +142,3 @@ To verify the functional integrity of the decoupled pipeline:
 2.  **Trace Queue Execution:** Check the SQS metrics. You will observe a brief spike in *Messages Available* followed instantly by *Messages Consumed*, proving that S3 successfully fired the event notification and Lambda successfully processed the message out of the queue.
 3.  **Verify DB Records:** Navigate to your DynamoDB table `MedicalAssetMetadata` and click **Explore table items**. You will see a newly minted metadata entry containing the specific file details, operational timestamps, and references to the patient identifier.
 4.  **Confirm Thumbnail Creation:** Check the destination S3 bucket (`yourname-processed-medical-thumbnails`) to confirm that a corresponding processed, downscaled thumbnail asset resides safely within the target folder structure.
-
----
-
-## 6. SAA-C03 Exam Mapping & Key Takeaways
-
-This architectural implementation directly addresses major architectural themes tested inside the **AWS Certified Solutions Architect - Associate** certification blueprint:
-
-* **Design Resilient Architectures (Domain 1):** Utilizing an SQS buffer represents the architectural gold standard for decoupled application design. Even if the downstream compute layer experiences temporary limits or outages, transactions are not lost; they reside safely inside the managed message queue.
-* **Design High-Performing Architectures (Domain 2):** Amazon S3 provides highly durable and scalable object storage capable of serving massive parallel upload/download requirements. DynamoDB delivers deterministic millisecond indexing, bypassing traditional relational database connection exhaustion and scalability limits.
-* **Design Secure Applications and Architectures (Domain 3):** All network data interactions are completely secured via HTTPS endpoints. Execution policies strictly follow the principle of least privilege through contextual IAM Roles and Resource Policies, locking down access to healthcare assets entirely.
-* **Design Cost-Optimized Architectures (Domain 4):** This is a 100% Serverless architecture. When there are no hospital uploads occurring (such as late hours or holiday cycles), the operational compute billing falls precisely to **zero**. There are no flat hourly running instance costs like those associated with running continuous EC2 instances.
