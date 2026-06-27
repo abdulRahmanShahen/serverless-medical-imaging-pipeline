@@ -1,4 +1,4 @@
-![image alt] (https://github.com/abdulRahmanShahen/serverless-medical-imaging-pipeline/blob/061b5f5de2282d3771c583a6b876c526cf0e8cc9/Blank%20diagram%20(30).png)
+![image alt](https://github.com/abdulRahmanShahen/serverless-medical-imaging-pipeline/blob/061b5f5de2282d3771c583a6b876c526cf0e8cc9/Blank%20diagram%20(30).png)
 # Serverless Medical Imaging & Prescription Processing Pipeline
 ### AWS Solutions Architect - Associate (SAA-C03) Graduation Project
 **Author:** [Abdul-Rahman Mohamad Shaheen]  
